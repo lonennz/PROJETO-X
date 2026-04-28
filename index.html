@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mistério Sem Respostas</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background: url("fundo.jpg") no-repeat center center;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.menu {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+
+    animation: fadeIn 2s ease;
+}
+
+h1 {
+    font-size: 70px;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+}
+
+h1 span {
+    display: block;
+    color: red;
+    font-size: 30px;
+    letter-spacing: 8px;
+}
+
+.frase {
+    margin-bottom: 40px;
+    color: #ccc;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+button {
+    display: block;
+    width: 280px;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 18px;
+    letter-spacing: 2px;
+
+    background: rgba(0,0,0,0.5);
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    backdrop-filter: blur(5px);
+}
+
+.jogar {
+    border: 2px solid red;
+    box-shadow: 0 0 10px red;
+}
+
+button:hover {
+    transform: scale(1.05);
+    border-color: red;
+    box-shadow: 0 0 15px red;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px red;
+    }
+    50% {
+        box-shadow: 0 0 25px red;
+    }
+    100% {
+        box-shadow: 0 0 10px red;
+    }
+}
+
+.jogar {
+    animation: pulse 2s infinite;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="menu">
+    
+    <button class="jogar" onclick="jogar()">JOGAR</button>
+    <button onclick="instrucoes()">INSTRUÇÕES</button>
+    <button onclick="creditos()">CRÉDITOS</button>
+</div>
+
+<script>
+
+function jogar() {
+    window.location.href = "jogo.html";
+}
+
+function instrucoes() {
+    alert("Investigue, encontre pistas e descubra o culpado.");
+}
+
+function creditos() {
+    alert("Jogo desenvolvido por TURMA X 😎");
+}
+
+</script>
+
+</body>
+</html>
