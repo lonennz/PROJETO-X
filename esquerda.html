@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fase 2 - Mistério Sem Respostas</title>
+<title>Esquerda - Mistério Sem Respostas</title>
 
 <style>
 
@@ -34,7 +34,7 @@ body{
     position:relative;
 }
 
-/* ESCURECER FUNDO */
+/* ESCURECER O FUNDO */
 
 body::before{
     content:"";
@@ -118,7 +118,7 @@ button{
 
     transition:0.3s;
 
-    margin-right:10px;
+    margin:10px;
 }
 
 button:hover{
@@ -148,16 +148,16 @@ button:hover{
 
 <div class="container">
 
-    <h1>FLORESTA</h1>
+    <h1>CAMINHO DA ESQUERDA</h1>
 
     <div id="texto"></div>
 
-    <button id="btn1" onclick="continuar1()">
-        ESQUERDA
+    <button id="btn1" onclick="investigar()">
+        INVESTIGAR A ÁREA POR MAIS PISTAS
     </button>
 
-    <button id="btn2" onclick="continuar2()">
-        DIREITA
+    <button id="btn2" onclick="voltar()">
+        VOLTAR DE ONDE VEIO
     </button>
 
 </div>
@@ -165,9 +165,15 @@ button:hover{
 <script>
 
 const historia = `
-Agora você tem que fazer a sua primeira escolha importante nessa história:
 
-Qual caminho irá seguir primeiro?
+Beco sem saída.
+
+Parece que uma árvore acabou obstruindo a passagem,
+e não há como prosseguir por aqui.
+
+A princípio, você quer voltar para o caminho de onde veio,
+mas sente que há mais coisas para investigar na área...
+
 `;
 
 let i = 0;
@@ -191,17 +197,18 @@ function escreverTexto(){
 
 escreverTexto();
 
-function continuar1(){
+function investigar(){
 
-    window.location.href = "esquerda.html";
+    window.location.href = "investigar.html";
 }
 
-function continuar2(){
+function voltar(){
 
-    window.location.href = "direita.html";
+    window.location.href = "fase2.html";
 }
 
 </script>
 
 </body>
+
 </html>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fase 2 - Mistério Sem Respostas</title>
+<title>Fase 3 - Mistério Sem Respostas</title>
 
 <style>
 
@@ -18,7 +18,7 @@
 body{
     height:100vh;
 
-    background-image:url("Floresta.png");
+    background-image:url("chalé.png");
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
@@ -34,7 +34,7 @@ body{
     position:relative;
 }
 
-/* ESCURECER FUNDO */
+/* ESCURECER O FUNDO */
 
 body::before{
     content:"";
@@ -148,16 +148,20 @@ button:hover{
 
 <div class="container">
 
-    <h1>FLORESTA</h1>
+    <h1>CHALÉ</h1>
 
     <div id="texto"></div>
 
     <button id="btn1" onclick="continuar1()">
-        ESQUERDA
+        INVESTIGAR COZINHA
     </button>
 
     <button id="btn2" onclick="continuar2()">
-        DIREITA
+        INVESTIGAR QUARTOS
+    </button>
+
+    <button id="btn3" onclick="continuar3()">
+        INVESTIGAR SALA
     </button>
 
 </div>
@@ -165,9 +169,18 @@ button:hover{
 <script>
 
 const historia = `
-Agora você tem que fazer a sua primeira escolha importante nessa história:
+Passando pelo caminho da direita, um pouco mais estreito,
+você se depara com um pequeno chalé desgastado.
 
-Qual caminho irá seguir primeiro?
+Edward bate na porta e é atendido por um homem simpático,
+que o convida para entrar em sua residência.
+
+Dentro, você explica o porquê de estar ali,
+e o homem diz que não viu nenhuma mulher que bata,
+até então, com a descrição que você fez.
+
+Ele sai por um momento para pegar lenha para a fogueira,
+e esse é o tempo para tomar uma decisão...
 `;
 
 let i = 0;
@@ -186,6 +199,7 @@ function escreverTexto(){
 
         document.getElementById("btn1").style.display = "inline-block";
         document.getElementById("btn2").style.display = "inline-block";
+        document.getElementById("btn3").style.display = "inline-block";
     }
 }
 
@@ -193,12 +207,17 @@ escreverTexto();
 
 function continuar1(){
 
-    window.location.href = "esquerda.html";
+    window.location.href = "cozinha.html";
 }
 
 function continuar2(){
 
-    window.location.href = "direita.html";
+    window.location.href = "quartos.html";
+}
+
+function continuar3(){
+
+    window.location.href = "sala.html";
 }
 
 </script>
