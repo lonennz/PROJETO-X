@@ -96,6 +96,24 @@ button:hover{
     box-shadow:0 0 15px red;
 }
 
+/* BOTÃO PULAR */
+
+#skipBtn{
+    display:block;
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#444;
+}
+
+#skipBtn:hover{
+    background:red;
+}
+
 @keyframes fade{
     from{
         opacity:0;
@@ -119,6 +137,8 @@ button:hover{
     <h1>MISTÉRIO SEM RESPOSTAS</h1>
 
     <div id="texto"></div>
+
+    <button id="skipBtn">PULAR</button>
 
     <button onclick="continuar()">INICIAR INVESTIGAÇÃO</button>
 
@@ -145,22 +165,43 @@ Agora, Edward precisa descobrir o que realmente aconteceu com Sarah Grayson.
 `;
 
 let i = 0;
+let timeoutTexto;
+
+const texto = document.getElementById("texto");
+const botaoIniciar = document.querySelector('button[onclick="continuar()"]');
+const skipBtn = document.getElementById("skipBtn");
 
 function escreverTexto(){
 
     if(i < historia.length){
 
-        document.getElementById("texto").innerHTML += historia.charAt(i);
+        texto.innerHTML += historia.charAt(i);
 
         i++;
 
-        setTimeout(escreverTexto, 30);
+        timeoutTexto = setTimeout(escreverTexto, 30);
     }
 
     else{
-        document.querySelector("button").style.display = "block";
+
+        botaoIniciar.style.display = "block";
+
+        skipBtn.style.display = "none";
     }
 }
+
+function skipTexto(){
+
+    clearTimeout(timeoutTexto);
+
+    texto.innerHTML = historia;
+
+    botaoIniciar.style.display = "block";
+
+    skipBtn.style.display = "none";
+}
+
+skipBtn.addEventListener("click", skipTexto);
 
 escreverTexto();
 

@@ -107,6 +107,22 @@ button:hover{
     box-shadow:0 0 15px red;
 }
 
+#skipBtn{
+    display:block;
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#444;
+}
+
+#skipBtn:hover{
+    background:red;
+}
+
 @keyframes fade{
 
     from{
@@ -132,7 +148,9 @@ button:hover{
 
     <div id="texto"></div>
 
-    <button onclick="continuar()">ENTRAR NA FLORESTA</button>
+<button id="skipBtn">PULAR</button>
+
+<button onclick="continuar()">ENTRAR NA FLORESTA</button>
 
 </div>
 
@@ -149,23 +167,42 @@ Com isso, Edward tem seu destino traçado até a macabra floresta.
 `;
 
 let i = 0;
+let timeoutTexto;
+
+const texto = document.getElementById("texto");
+const botaoEntrar = document.querySelector('button[onclick="continuar()"]');
+const skipBtn = document.getElementById("skipBtn");
 
 function escreverTexto(){
 
     if(i < historia.length){
 
-        document.getElementById("texto").innerHTML += historia.charAt(i);
+        texto.innerHTML += historia.charAt(i);
 
         i++;
 
-        setTimeout(escreverTexto, 30);
+        timeoutTexto = setTimeout(escreverTexto, 30);
     }
 
     else{
 
-        document.querySelector("button").style.display = "block";
+        botaoEntrar.style.display = "block";
+        skipBtn.style.display = "none";
     }
 }
+
+function skipTexto(){
+
+    clearTimeout(timeoutTexto);
+
+    texto.innerHTML = historia;
+
+    botaoEntrar.style.display = "block";
+
+    skipBtn.style.display = "none";
+}
+
+skipBtn.addEventListener("click", skipTexto);
 
 escreverTexto();
 

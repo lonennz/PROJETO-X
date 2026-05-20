@@ -127,6 +127,24 @@ button:hover{
     box-shadow:0 0 15px red;
 }
 
+/* BOTÃO PULAR */
+
+#skipBtn{
+    display:block;
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#444;
+}
+
+#skipBtn:hover{
+    background:red;
+}
+
 @keyframes fade{
 
     from{
@@ -151,6 +169,8 @@ button:hover{
     <h1>CAMINHO DA ESQUERDA</h1>
 
     <div id="texto"></div>
+
+    <button id="skipBtn">PULAR</button>
 
     <button id="btn1" onclick="investigar()">
         INVESTIGAR A ÁREA POR MAIS PISTAS
@@ -177,23 +197,47 @@ mas sente que há mais coisas para investigar na área...
 `;
 
 let i = 0;
+let timeoutTexto;
+
+const texto = document.getElementById("texto");
+const skipBtn = document.getElementById("skipBtn");
+
+function mostrarBotoes(){
+
+    document.getElementById("btn1").style.display = "inline-block";
+    document.getElementById("btn2").style.display = "inline-block";
+
+    skipBtn.style.display = "none";
+}
 
 function escreverTexto(){
 
     if(i < historia.length){
 
-        document.getElementById("texto").innerHTML += historia.charAt(i);
+        texto.innerHTML += historia.charAt(i);
 
         i++;
 
-        setTimeout(escreverTexto, 30);
+        timeoutTexto = setTimeout(escreverTexto, 30);
 
-    } else {
+    } 
+    
+    else {
 
-        document.getElementById("btn1").style.display = "inline-block";
-        document.getElementById("btn2").style.display = "inline-block";
+        mostrarBotoes();
     }
 }
+
+function skipTexto(){
+
+    clearTimeout(timeoutTexto);
+
+    texto.innerHTML = historia;
+
+    mostrarBotoes();
+}
+
+skipBtn.addEventListener("click", skipTexto);
 
 escreverTexto();
 

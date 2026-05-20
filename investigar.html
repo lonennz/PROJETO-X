@@ -18,7 +18,6 @@
 body{
     height:100vh;
 
-    /* CORRIGIDO */
     background-image:url("celular.png");
     background-position:center;
     background-repeat:no-repeat;
@@ -122,6 +121,24 @@ button:hover{
     box-shadow:0 0 15px red;
 }
 
+/* BOTÃO PULAR */
+
+#skipBtn{
+    display:block;
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#444;
+}
+
+#skipBtn:hover{
+    background:red;
+}
+
 @keyframes fade{
 
     from{
@@ -147,6 +164,8 @@ button:hover{
 
     <div id="texto"></div>
 
+    <button id="skipBtn">PULAR</button>
+
     <button id="btn1" onclick="continuar1()">VOLTAR</button>
 
 </div>
@@ -167,22 +186,44 @@ Com isso, você confirma que as pistas estavam certas e volta.
 `;
 
 let i = 0;
+let timeoutTexto;
+
+const texto = document.getElementById("texto");
+const btn1 = document.getElementById("btn1");
+const skipBtn = document.getElementById("skipBtn");
 
 function escreverTexto(){
 
     if(i < historia.length){
 
-        document.getElementById("texto").innerHTML += historia.charAt(i);
+        texto.innerHTML += historia.charAt(i);
 
         i++;
 
-        setTimeout(escreverTexto, 30);
+        timeoutTexto = setTimeout(escreverTexto, 30);
 
-    } else {
+    } 
+    
+    else {
 
-        document.getElementById("btn1").style.display = "inline-block";
+        btn1.style.display = "inline-block";
+
+        skipBtn.style.display = "none";
     }
 }
+
+function skipTexto(){
+
+    clearTimeout(timeoutTexto);
+
+    texto.innerHTML = historia;
+
+    btn1.style.display = "inline-block";
+
+    skipBtn.style.display = "none";
+}
+
+skipBtn.addEventListener("click", skipTexto);
 
 escreverTexto();
 

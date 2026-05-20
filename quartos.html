@@ -127,6 +127,24 @@ button:hover{
     box-shadow:0 0 15px red;
 }
 
+/* BOTÃO PULAR */
+
+#skipBtn{
+    display:block;
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#444;
+}
+
+#skipBtn:hover{
+    background:red;
+}
+
 @keyframes fade{
 
     from{
@@ -152,15 +170,18 @@ button:hover{
 
     <div id="texto"></div>
 
+    <button id="skipBtn">PULAR</button>
+
     <button id="btn1" onclick="continuar1()">
        PULAR PELA JANELA
- <button id="btn2" onclick="continuar2()">
-       SAIR DE FININHO
- <button id="btn3" onclick="continuar3()">
-       SE ESCONDER
-    
     </button>
 
+    <button id="btn2" onclick="continuar2()">
+       SAIR DE FININHO
+    </button>
+
+    <button id="btn3" onclick="continuar3()">
+       SE ESCONDER
     </button>
 
 </div>
@@ -169,30 +190,57 @@ button:hover{
 
 const historia = `
 Edward vai até os quartos para checá-los e, assim como os outros cômodos, parece tudo normal a princípio. Mas você abre uma das gavetas e encontra uma carta suspeita. Essa carta contém as iniciais “S.G.” e um pedido de socorro com a localização do chalé, que nunca foi enviado.
-A filha do homem estava aqui, mas você chegou tarde demais.
-Você ouve um barulho alto na porta da frente da casa. Pessoas de sobretudo invadem a residência e, junto delas, é possível ver o dono da casa. Provavelmente, ele é cúmplice dessa loucura. Agora, Edward tem que tomar uma decisão rápido...
 
+A filha do homem estava aqui, mas você chegou tarde demais.
+
+Você ouve um barulho alto na porta da frente da casa. Pessoas de sobretudo invadem a residência e, junto delas, é possível ver o dono da casa. Provavelmente, ele é cúmplice dessa loucura.
+
+Agora, Edward tem que tomar uma decisão rápido...
 `;
 
 let i = 0;
+let timeoutTexto;
+
+const texto = document.getElementById("texto");
+const skipBtn = document.getElementById("skipBtn");
+
+function mostrarBotoes(){
+
+    document.getElementById("btn1").style.display = "inline-block";
+    document.getElementById("btn2").style.display = "inline-block";
+    document.getElementById("btn3").style.display = "inline-block";
+
+    skipBtn.style.display = "none";
+}
 
 function escreverTexto(){
 
     if(i < historia.length){
 
-        document.getElementById("texto").innerHTML += historia.charAt(i);
+        texto.innerHTML += historia.charAt(i);
 
         i++;
 
-        setTimeout(escreverTexto, 30);
+        timeoutTexto = setTimeout(escreverTexto, 30);
 
-    } else {
+    } 
+    
+    else {
 
-        document.getElementById("btn1").style.display = "inline-block";
-        document.getElementById("btn2").style.display = "inline-block";
-        document.getElementById("btn3").style.display = "inline-block";
+        mostrarBotoes();
     }
 }
+
+function skipTexto(){
+
+    clearTimeout(timeoutTexto);
+
+    texto.innerHTML = historia;
+
+    mostrarBotoes();
+}
+
+skipBtn.addEventListener("click", skipTexto);
 
 escreverTexto();
 
