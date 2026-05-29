@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fase 4 - Mistério Sem Respostas</title>
+<title>Fase 7 - Mistério Sem Respostas</title>
 
 <style>
 
@@ -18,7 +18,7 @@
 body{
     height:100vh;
 
-    background-image:url("redondezas.png");
+    background-image:url("floresta.png");
     background-position:center;
     background-repeat:no-repeat;
     background-size:cover;
@@ -166,22 +166,22 @@ button:hover{
 
 <div class="container">
 
-    <h1>REDONDEZAS DA IGREJA</h1>
+    <h1>PASSOS FINAIS</h1>
 
     <div id="texto"></div>
 
     <button id="skipBtn">PULAR</button>
 
     <button id="btn1" onclick="continuar1()">
-        VOCÊ GOLPEIA O GURADA SORRATEIRAMENTE
+    SE ESCONDER
     </button>
 
     <button id="btn2" onclick="continuar2()">
-        VOCÊ TENTA LIGAR PARA A POLÍCIA
+        LUTAR COM O PERSEGUIDOR
     </button>
 
     <button id="btn3" onclick="continuar3()">
-        VOCÊ PROCURA OUTRA ENTRADA
+      CORRER
     </button>
 
 </div>
@@ -189,9 +189,9 @@ button:hover{
 <script>
 
 const historia = `
-Chegando às redondezas da igreja, você percebe a presença de algumas pessoas guardando a entrada do lugar. Eles estão usando a mesma vestimenta dos perseguidores de antes. Como você pretende entrar na igreja?
-`;
-
+Vocês saem daquele lugar em ruínas e entram novamente na floresta. Após caminharem por algumas horas, avistam a cidade, onde finalmente poderiam escapar em segurança. Porém, vocês escutam alguém gritando às suas costas: era um dos perseguidores, que estava procurando por vocês.
+Ele já os avistou e está se aproximando. O que fazer?
+`
 let i = 0;
 let timeoutTexto;
 
@@ -203,6 +203,8 @@ function mostrarBotoes(){
     document.getElementById("btn1").style.display = "inline-block";
     document.getElementById("btn2").style.display = "inline-block";
     document.getElementById("btn3").style.display = "inline-block";
+    
+
 
     skipBtn.style.display = "none";
 }
@@ -240,17 +242,17 @@ escreverTexto();
 
 function continuar1(){
 
-    window.location.href = "guarda.html";
+    window.location.href = "esconder2.html";
 }
 
 function continuar2(){
 
-    window.location.href = "policia.html";
+    window.location.href = "lutar.html";
 }
 
 function continuar3(){
 
-    window.location.href = "fase5.html";
+    window.location.href = "correr.html";
 }
 
 </script>
